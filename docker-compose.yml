@@ -1,0 +1,16 @@
+version: '2'
+services:
+  raspap:
+    privileged: true
+    container_name: raspap
+    image: kpma1985/raspap_docker:0.1
+    environment:
+      - ssid=WIFI_AP
+      - passphrase=topsecret123
+      - country=DE
+      - web_port=8080
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /etc/localtime:/etc/localtime:ro
+    restart: always
+    network_mode: host
